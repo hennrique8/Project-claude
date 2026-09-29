@@ -1,0 +1,30 @@
+[submodule "skills/superpowers"]
+	path = skills/superpowers
+	url = https://github.com/obra/superpowers
+[submodule "skills/ponytail"]
+	path = skills/ponytail
+	url = https://github.com/DietrichGebert/ponytail
+[submodule "skills/ui-ux-pro-max"]
+	path = skills/ui-ux-pro-max
+	url = https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+[submodule "skills/graphify"]
+	path = skills/graphify
+	url = https://github.com/Graphify-Labs/graphify
+[submodule "skills/caveman"]
+	path = skills/caveman
+	url = https://github.com/JuliusBrussee/caveman
+[submodule "skills/agent-skills"]
+	path = skills/agent-skills
+	url = https://github.com/addyosmani/agent-skills
+[submodule "skills/understand-anything"]
+	path = skills/understand-anything
+	url = https://github.com/Egonex-AI/Understand-Anything
+[submodule "skills/awesome-claude-skills"]
+	path = skills/awesome-claude-skills
+	url = https://github.com/ComposioHQ/awesome-claude-skills
+[submodule "skills/archify"]
+	path = skills/archify
+	url = https://github.com/tt-a1i/archify
+[submodule "skills/impeccable"]
+	path = skills/impeccable
+	url = https://github.com/pbakaus/impeccable
