@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-09-29" agent="Claude" version="24.7.17" etag="abc123">
+  <diagram id="payment-flow" name="Metro EFT Payment Flow">
+    <mxGraphModel dx="1434" dy="759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Title -->
+        <mxCell id="2" value="Metro EFT - Fluxo de Pagamento (Baseline)" style="text;html=1;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="10" width="500" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- START -->
+        <mxCell id="3" value="Caixa Inicia Venda" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="70" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Terminal Check -->
+        <mxCell id="4" value="Terminal&#10;READY?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="160" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Not Ready Path -->
+        <mxCell id="5" value="Mostrar &quot;Terminal&#10;Indisponível&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="170" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Create Payment ID -->
+        <mxCell id="6" value="Criar payment_id&#10;Persistir em DB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="300" width="180" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Send to Terminal -->
+        <mxCell id="7" value="Enviar Requisição&#10;ao Terminal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="410" width="180" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Await Response -->
+        <mxCell id="8" value="Aguardar&#10;Resposta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="520" width="180" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Response Decision -->
+        <mxCell id="9" value="Resposta&#10;Recebida?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="630" width="140" height="100" as="geometry"/>
+        </thinking>
+        
+        <!-- Unknown Outcome Path -->
+        <mxCell id="10" value="Ativar Recovery:&#10;Procurar payment_id&#10;no Terminal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="640" width="150" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Payment Outcome Decision -->
+        <mxCell id="11" value="Status da&#10;Transação?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="410" y="760" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Approved Path -->
+        <mxCell id="12" value="Transação&#10;APROVADA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="770" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Declined Path -->
+        <mxCell id="13" value="Transação&#10;RECUSADA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="770" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Print Receipt -->
+        <mxCell id="14" value="Imprimir Recibo&#10;(Regra por País)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="410" y="900" width="180" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- End Success -->
+        <mxCell id="15" value="Transação&#10;Finalizada" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="1010" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- CONNECTORS -->
+        <!-- 3 to 4 -->
+        <mxCell id="c1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- 4 to 5 (NO) -->
+        <mxCell id="c2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="4" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="210" as="sourcePoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 4 to 6 (YES) -->
+        <mxCell id="c3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="4" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="260" as="sourcePoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 6 to 7 -->
+        <mxCell id="c4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="6" target="7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- 7 to 8 -->
+        <mxCell id="c5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- 8 to 9 -->
+        <mxCell id="c6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- 9 to 10 (NO - Unknown) -->
+        <mxCell id="c7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="9" target="10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="730" y="680" as="sourcePoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 10 back to 11 -->
+        <mxCell id="c8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="10" target="11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="640" as="sourcePoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 9 to 11 (YES) -->
+        <mxCell id="c9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="9" target="11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="730" as="sourcePoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 11 to 12 (APROVADA) -->
+        <mxCell id="c10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="11" target="12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="810" as="sourcePoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 11 to 13 (RECUSADA) -->
+        <mxCell id="c11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="11" target="13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="810" as="sourcePoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 12 to 14 -->
+        <mxCell id="c12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="770" as="sourcePoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 13 to 14 -->
+        <mxCell id="c13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="630" y="770" as="sourcePoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 14 to 15 -->
+        <mxCell id="c14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="14" target="15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Legend -->
+        <mxCell id="legend" value="Legenda:" style="text;html=1;align=left;verticalAlign=top;fontSize=11;fontStyle=1;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="150" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="leg1" value="Verde: Inicio/Final" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="50" y="95" width="120" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="leg2" value="Azul: Processamento" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="120" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="leg3" value="Laranja: Decisão" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="50" y="165" width="120" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="leg4" value="Vermelho: Erro/Fail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="120" height="30" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
